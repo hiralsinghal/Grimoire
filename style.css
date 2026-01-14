@@ -1,32 +1,32 @@
 .gentium-book-plus-regular {
-  font-family: "Gentium Book Plus", serif;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Gentium Book Plus", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .gentium-book-plus-bold {
-  font-family: "Gentium Book Plus", serif;
-  font-weight: 700;
-  font-style: normal;
+    font-family: "Gentium Book Plus", serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .gentium-book-plus-regular-italic {
-  font-family: "Gentium Book Plus", serif;
-  font-weight: 400;
-  font-style: italic;
+    font-family: "Gentium Book Plus", serif;
+    font-weight: 400;
+    font-style: italic;
 }
 
 .gentium-book-plus-bold-italic {
-  font-family: "Gentium Book Plus", serif;
-  font-weight: 700;
-  font-style: italic;
+    font-family: "Gentium Book Plus", serif;
+    font-weight: 700;
+    font-style: italic;
 }
 
 .domine-regular {
-  font-family: "Domine", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Domine", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
 
@@ -39,53 +39,34 @@ header {
 
 }
 
-top-header {
-    text-align: center;
-    height: 60px;
+.nav #text {
+    display: inline-block;
 }
 
-#text {
-    float: left;
-    padding: none;
-    margin: none;
-    font-size: 50px;
-    color: white;
+.nav {
+    background-color: aliceblue;
+    overflow: hidden;
     font-family: "Gentium Book Plus", serif;
-}
+    font-weight: 700;
+    font-style: normal;
+    font-size: 100%;
+}    
 
-#menu {
+.nav a {
     float: right;
-    width: 70%;
-    height: 100%;
-    margin: none;
-}
-
-#menu ul {
+    color: black;
     text-align: center;
-    float: right;
-    margin: none;
-    background-color: white;
-}
-
-#menu li {
-    display: inline-block;
-    padding: none;
-    margin: none;
-}
-
-#menu li a, #menu li span {
-    display: inline-block;
-    padding: 1px 3px;
-}
-
-#menu li a {
-    color: white;
-    background-color: #222222;
-}
-
-#menu li:hover a, #menu li span{
-    background: #FFF;
-    color: #0074D9;
-    border-left: 1px solid #0074D9;
+    padding: 12px 14px;
     text-decoration: none;
+    font-size: 17px;
+}
+
+.nav a:hover {
+    background-color:  #222222;
+    color: white;
+}
+
+.nav a.active {
+  background-color: #d6e7e1;
+  color: rgb(0, 0, 0);
 }
