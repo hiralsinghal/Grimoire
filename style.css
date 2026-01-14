@@ -39,21 +39,22 @@ header {
 
 }
 
-.nav #text {
-    display: inline-block;
-}
-
 .nav {
     background-color: aliceblue;
     overflow: hidden;
+    display: flex;
+    align-items: center;
     font-family: "Gentium Book Plus", serif;
     font-weight: 700;
     font-style: normal;
     font-size: 100%;
-}    
+}
+
+.nav #text {
+    padding-left: 12px;
+}
 
 .nav a {
-    float: right;
     color: black;
     text-align: center;
     padding: 12px 14px;
