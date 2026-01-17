@@ -34,6 +34,13 @@ body {
     background-color:#222222;
 }
 
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
 header {
     overflow: hidden;
 
@@ -70,4 +77,24 @@ header {
 .nav a.active {
   background-color: #d6e7e1;
   color: rgb(0, 0, 0);
+}
+
+/*main { */
+
+#header {
+    color:white;
+    max-width: fit-content;
+    margin-inline: auto;
+}
+
+#header h1 {
+    text-align: center;
+}
+
+#header p {
+    text-align: center;
+}
+
+#sec1 {
+    color: rgb(226, 232, 252);
 }
