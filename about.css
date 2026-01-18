@@ -29,24 +29,12 @@
     font-style: normal;
 }
 
-
 body {
     background-color:#222222;
 }
 
-canvas {
-  display: flex;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: -1;
-  pointer-events: none;
-}
-
-
 header {
     overflow: hidden;
-    display:block;
 }
 
 .nav {
@@ -96,32 +84,4 @@ header {
 
 #header p {
     text-align: center;
-}
-
-#sec1 {
-    color: rgb(226, 232, 252);
-}
-
-#sec2 {
-    color: rgb(226, 232, 252);
-}
-
-#sec3 {
-    color: rgb(226, 232, 252);
-}
-
-#sec4 {
-    color: rgb(226, 232, 252);
-}
-
-#sec5 {
-    color: rgb(226, 232, 252);
-}
-
-#sec6 {
-    color: rgb(226, 232, 252);
-}
-
-#sec7 {
-    color: rgb(226, 232, 252);
 }

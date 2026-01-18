@@ -1,13 +1,20 @@
+import './style.css';
 import * as THREE from 'three';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer()
 renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setAnimationLoop( animate );
 renderer.render(scene, camera);
-document.body.appendChild(renderer.domElement);
+document.body.appendChild( renderer.domElement );
+
+camera.position.setZ = 45;
+
+function animate() {
+  renderer.render( scene, camera );
+}
 
 function add_star() {
   const star_geometry = new THREE.SphereGeometry(0.25, 24, 24);
@@ -23,9 +30,6 @@ function add_star() {
 }
 
 Array(200).fill().forEach(add_star);
-
-camera.position.z = 3
-scene.add(camera);
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
