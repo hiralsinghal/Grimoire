@@ -50,18 +50,16 @@ header {
 }
 
 .nav {
-    background-color: aliceblue;
+    background-color: #95b8d1;
     overflow: hidden;
-    display: flex;
+    display: block;
     align-items: center;
     font-family: "Gentium Book Plus", serif;
     font-weight: 700;
     font-style: normal;
     font-size: 100%;
-}
-
-.nav #text {
-    padding-left: 12px;
+    width: 100%;
+    padding: 12px 14px;
 }
 
 .nav a {
@@ -70,6 +68,7 @@ header {
     padding: 12px 14px;
     text-decoration: none;
     font-size: 17px;
+    height: 40px;
 }
 
 .nav a:hover {
@@ -99,29 +98,18 @@ header {
 }
 
 #sec1 {
-    color: rgb(226, 232, 252);
+    color: #DDDDDD;
 }
 
 #sec2 {
-    color: rgb(226, 232, 252);
+    color: #DDDDDD;
 }
 
 #sec3 {
-    color: rgb(226, 232, 252);
+    color: #d6eadf;
 }
 
-#sec4 {
-    color: rgb(226, 232, 252);
-}
 
-#sec5 {
-    color: rgb(226, 232, 252);
-}
-
-#sec6 {
-    color: rgb(226, 232, 252);
-}
-
-#sec7 {
-    color: rgb(226, 232, 252);
+footer {
+    color: #d6eadf;
 }

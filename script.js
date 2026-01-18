@@ -9,6 +9,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setAnimationLoop( animate );
 renderer.render(scene, camera);
 document.body.appendChild( renderer.domElement );
+scene.background = new THREE.Color( 0x222222 );
 
 camera.position.setZ = 45;
 
@@ -29,7 +30,7 @@ function add_star() {
   scene.add(star);
 }
 
-Array(200).fill().forEach(add_star);
+Array(1000).fill().forEach(add_star);
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
