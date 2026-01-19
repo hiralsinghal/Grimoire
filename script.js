@@ -11,7 +11,7 @@ renderer.render(scene, camera);
 document.body.appendChild( renderer.domElement );
 scene.background = new THREE.Color( 0x222222 );
 
-camera.position.setZ = 35;
+camera.position.setZ = 26;
 
 function animate() {
   renderer.render( scene, camera );
