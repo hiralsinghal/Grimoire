@@ -45,7 +45,7 @@ document.body.onscroll = moveCamera;
 moveCamera();
 
 document.getElementById("playAudio").addEventListener("click", function(){
-    var audio = document.getElementById('testAudio');
+    var audio = document.getElementById('audio');
   if(this.className == 'is-playing'){
     this.className = "";
     this.innerHTML = "Play"
