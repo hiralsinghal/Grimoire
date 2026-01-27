@@ -1,0 +1,21 @@
+#header {
+    color:white;
+    max-width: fit-content;
+    margin-inline: auto;
+}
+
+#header h1 {
+    text-align: center;
+}
+
+#header p {
+    text-align: center;
+}
+
+#sec1 {
+    color: #DDDDDD;
+}
+
+#sec2 {
+    color: #DDDDDD;
+}
