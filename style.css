@@ -33,6 +33,8 @@
 
 body {
     background-color:#222222;
+    margin:0;
+    padding:0;
 }
 
 canvas {
@@ -61,6 +63,7 @@ header {
     font-size: 100%;
     width: 100%;
     padding: 12px 14px;
+    justify-content:center;
 }
 
 .nav a {
@@ -69,7 +72,7 @@ header {
     padding: 12px 14px;
     text-decoration: none;
     font-size: 17px;
-    height: 40px;
+    height: 35px;
 }
 
 .nav a:hover {
@@ -81,4 +84,3 @@ header {
   background-color: #d6e7e1;
   color: rgb(0, 0, 0);
 }
-

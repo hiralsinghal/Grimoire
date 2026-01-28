@@ -1,4 +1,6 @@
-/*main { */
+.common_style {
+    margin: 10px;
+}
 
 #header {
     color:white;
@@ -8,24 +10,33 @@
 
 #header h1 {
     text-align: center;
+    font-size: 90px;
+    padding-bottom: 0;
+    margin-bottom: 5px;
 }
 
 #header p {
     text-align: center;
+    font-size: 25px;
+    padding-top: 0;
+    margin-top: 0;
 }
 
-#sec1 {
+#welcome {
     color: #DDDDDD;
 }
 
-#sec2 {
+#objective {
     color: #DDDDDD;
 }
 
-#sec3 {
+#process {
     color: #ffffff;
 }
 
 footer {
-    color: #d6eadf;
+    margin-bottom:0;
+    padding:0;
+    color: #000000;
+    background-color: #ffabc7;
 }
