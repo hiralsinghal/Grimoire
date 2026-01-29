@@ -44,7 +44,7 @@ function moveCamera() {
 document.body.onscroll = moveCamera;
 moveCamera();
 
-document.getElementById("playAudio").addEventListener("click", function(){
+/*document.getElementById("playAudio").addEventListener("click", function(){
     var audio = document.getElementById('audio');
   if(this.className == 'is-playing'){
     this.className = "";
@@ -56,4 +56,4 @@ document.getElementById("playAudio").addEventListener("click", function(){
     audio.play();
   }
 
-})
+})*/
