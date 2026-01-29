@@ -1,0 +1,101 @@
+book_id,title,author,genre,description
+1,Harry Potter and the Sorcerer's Stone,J.K. Rowling,Fantasy,A young wizard discovers his magical heritage
+2,Harry Potter and the Chamber of Secrets,J.K. Rowling,Fantasy,A wizard faces a hidden dark force at school
+3,The Hobbit,J.R.R. Tolkien,Fantasy,A hobbit embarks on an unexpected adventure
+4,The Lord of the Rings,J.R.R. Tolkien,Fantasy,An epic quest to destroy a powerful ring
+5,A Game of Thrones,George R.R. Martin,Fantasy,Noble families battle for control of a kingdom
+6,The Name of the Wind,Patrick Rothfuss,Fantasy,A gifted magician recounts his life story
+7,Percy Jackson and the Lightning Thief,Rick Riordan,Fantasy,A boy discovers he is a demigod
+8,The Alchemist,Paulo Coelho,Fiction,A shepherd searches for his destiny
+9,To Kill a Mockingbird,Harper Lee,Classic,A story of racial injustice and morality
+10,1984,George Orwell,Dystopian,A totalitarian society under constant surveillance
+11,Animal Farm,George Orwell,Classic,A political allegory using farm animals
+12,Pride and Prejudice,Jane Austen,Classic,A romantic novel about manners and marriage
+13,The Great Gatsby,F. Scott Fitzgerald,Classic,A tragic story of love and ambition
+14,Moby Dick,Herman Melville,Classic,A captain obsessively hunts a white whale
+15,The Catcher in the Rye,J.D. Salinger,Classic,A teenager struggles with identity
+16,The Book Thief,Markus Zusak,Historical Fiction,A girl finds solace in books during war
+17,The Hunger Games,Suzanne Collins,Dystopian,A girl fights for survival in deadly games
+18,Divergent,Veronica Roth,Dystopian,A society divided by personality traits
+19,The Maze Runner,James Dashner,Dystopian,Teens trapped in a mysterious maze
+20,The Fault in Our Stars,John Green,Romance,Two teens fall in love while facing illness
+21,It Ends With Us,Colleen Hoover,Romance,A woman navigates love and trauma
+22,Me Before You,Jojo Moyes,Romance,A love story that changes lives
+23,The Girl on the Train,Paula Hawkins,Thriller,A woman becomes entangled in a mystery
+24,Gone Girl,Gillian Flynn,Thriller,A dark psychological mystery about marriage
+25,The Da Vinci Code,Dan Brown,Mystery,A symbologist uncovers secret societies
+26,Angels and Demons,Dan Brown,Mystery,A conspiracy threatens the Vatican
+27,Sherlock Holmes: The Hound of the Baskervilles,Arthur Conan Doyle,Mystery,A detective investigates a deadly legend
+28,The Silent Patient,Alex Michaelides,Thriller,A woman stops speaking after a murder
+29,The Shining,Stephen King,Horror,A family faces supernatural terror in a hotel
+30,It,Stephen King,Horror,A group confronts an ancient evil
+31,Dracula,Bram Stoker,Horror,A vampire spreads terror
+32,Frankenstein,Mary Shelley,Horror,A scientist creates a monster
+33,Dune,Frank Herbert,Science Fiction,A struggle for power on a desert planet
+34,Foundation,Isaac Asimov,Science Fiction,A plan to preserve knowledge across centuries
+35,Ender's Game,Orson Scott Card,Science Fiction,A boy is trained for interstellar war
+36,The Martian,Andy Weir,Science Fiction,An astronaut survives alone on Mars
+37,Neuromancer,William Gibson,Science Fiction,A hacker enters a cyberpunk world
+38,Atomic Habits,James Clear,Self-Help,Build good habits and break bad ones
+39,Rich Dad Poor Dad,Robert Kiyosaki,Self-Help,Lessons on money and investing
+40,Think and Grow Rich,Napoleon Hill,Self-Help,Success through mindset and belief
+41,The Power of Habit,Charles Duhigg,Self-Help,Understanding how habits work
+42,Deep Work,Cal Newport,Self-Help,Focused work for success
+43,The 7 Habits of Highly Effective People,Stephen Covey,Self-Help,Principles for personal effectiveness
+44,How to Win Friends and Influence People,Dale Carnegie,Self-Help,Improving communication and relationships
+45,Ikigai,Hector Garcia,Self-Help,Finding purpose in life
+46,Sapiens,Yuval Noah Harari,Non-Fiction,A history of humankind
+47,Homo Deus,Yuval Noah Harari,Non-Fiction,The future of humanity
+48,Educated,Tara Westover,Memoir,A woman pursues education against odds
+49,Becoming,Michelle Obama,Memoir,A personal journey of growth
+50,The Psychology of Money,Morgan Housel,Finance,Lessons on wealth and behavior
+51,The Subtle Art of Not Giving a F*ck,Mark Manson,Self-Help,A counterintuitive approach to living
+52,The Midnight Library,Matt Haig,Fiction,Exploring alternate lives
+53,Life of Pi,Yann Martel,Fiction,A boy survives at sea with a tiger
+54,The Kite Runner,Khaled Hosseini,Fiction,A story of friendship and redemption
+55,A Thousand Splendid Suns,Khaled Hosseini,Fiction,Women's lives in Afghanistan
+56,The Road,Cormac McCarthy,Dystopian,A father and son survive a bleak world
+57,Brave New World,Aldous Huxley,Dystopian,A society driven by pleasure
+58,Fahrenheit 451,Ray Bradbury,Dystopian,Books are outlawed in the future
+59,The Giver,Lois Lowry,Dystopian,A boy questions a perfect society
+60,The Chronicles of Narnia,C.S. Lewis,Fantasy,Children enter a magical world
+61,The Handmaid's Tale,Margaret Atwood,Dystopian,A woman's struggle in a theocracy
+62,Little Women,Louisa May Alcott,Classic,Sisters grow up during war
+63,Jane Eyre,Charlotte Bronte,Classic,A governess seeks independence
+64,Wuthering Heights,Emily Bronte,Classic,A dark love story
+65,The Old Man and the Sea,Ernest Hemingway,Classic,A fisherman battles nature
+66,Of Mice and Men,John Steinbeck,Classic,Friendship and dreams
+67,The Picture of Dorian Gray,Oscar Wilde,Classic,A man remains young while his soul decays
+68,Slaughterhouse-Five,Kurt Vonnegut,Science Fiction,A soldier becomes unstuck in time
+69,The Time Machine,H.G. Wells,Science Fiction,Travel to the distant future
+70,War of the Worlds,H.G. Wells,Science Fiction,An alien invasion
+71,The Girl with the Dragon Tattoo,Stieg Larsson,Thriller,A journalist uncovers dark secrets
+72,The Reversal,Michael Connelly,Crime,A legal thriller
+73,Inferno,Dan Brown,Mystery,A race against time to stop disaster
+74,The Godfather,Mario Puzo,Crime,A powerful crime family
+75,The Outsiders,S.E. Hinton,Young Adult,Teen rivalry and friendship
+76,The Perks of Being a Wallflower,Stephen Chbosky,Young Adult,A teen navigates life and identity
+77,The Hunger Games: Catching Fire,Suzanne Collins,Dystopian,Rebellion grows stronger
+78,The Hunger Games: Mockingjay,Suzanne Collins,Dystopian,The final fight for freedom
+79,The Maze Runner: Scorch Trials,James Dashner,Dystopian,Survival in a harsh world
+80,Ready Player One,Ernest Cline,Science Fiction,A virtual reality treasure hunt
+81,The Fault in Our Stars,John Green,Romance,Love and loss among teens
+82,The Notebook,Nicholas Sparks,Romance,A lifelong love story
+83,Shutter Island,Dennis Lehane,Thriller,A mystery in a mental hospital
+84,The Road Less Traveled,M. Scott Peck,Self-Help,Spiritual growth and discipline
+85,Man's Search for Meaning,Viktor Frankl,Philosophy,Finding meaning through suffering
+86,Thinking Fast and Slow,Daniel Kahneman,Psychology,Understanding how we think
+87,The Art of War,Sun Tzu,Philosophy,Ancient military strategy
+88,Meditations,Marcus Aurelius,Philosophy,Stoic philosophy reflections
+89,Can't Hurt Me,David Goggins,Memoir,Mental toughness and discipline
+90,Outliers,Malcolm Gladwell,Non-Fiction,The science of success
+91,The Lean Startup,Eric Ries,Business,Building successful startups
+92,Zero to One,Peter Thiel,Business,Creating innovative companies
+93,Start With Why,Simon Sinek,Business,Leadership through purpose
+94,Steve Jobs,Walter Isaacson,Biography,Life of Apple’s founder
+95,Elon Musk,Ashlee Vance,Biography,The life of a tech entrepreneur
+96,The Wright Brothers,David McCullough,Biography,Pioneers of aviation
+97,Into the Wild,Jon Krakauer,Adventure,A journey into the wilderness
+98,The Call of the Wild,Jack London,Adventure,A dog's survival story
+99,The Secret Garden,Frances Hodgson Burnett,Classic,A magical hidden garden
+100,Anne of Green Gables,L.M. Montgomery,Classic,A spirited orphan finds a home
