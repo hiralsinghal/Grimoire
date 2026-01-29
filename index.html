@@ -4,38 +4,48 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css"> <!--CSS across pages-->
+        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="css/index.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        
         <title>Grimoire</title>
     </head>
 
     <body>
-        <script type="module" src="/script.js"></script> <!--JS across pages-->
-        <header>
-            <div class="nav">
+        <div class="layout">
+        <header class="topbar">
+                <div class="logo">
+                    <img src="assets/grimoire_logo.png" alt="Grimoire Logo">
+                </div>
+
+                <div class="menu-btn" id="menuBtn">
+                    ☰
+                </div>
+            </header>
+
+           <nav class="side-menu" id="sideMenu">
                 <a href="index.html">Grimoire</a>
                 <a href="about.html">About Us</a>
                 <a href="profile.html">Profile</a>
-                
-                <!--<audio controls autoplay id="audio" hidden src="assets/Sweater Weather.mp3" type="audio/mpeg"></audio>
-                <button id="playAudio">Play</button>-->
-            </div>
-        </header>
+            </nav>
         
         <main class="common_style">
             <div id ="header">
                 <h1>Grimoire</h1>
                 <p>Novel Recommendation System</p>
             </div>
+
+            <div class="search-container">
+                <input type="text" placeholder="Enter a book..." id="bookSearch">
+            </div>
             
         </main>
 
         <section id="welcome" class="common_style">
             <h2>Welcome to NovaRec! (Or Grimoire, the name is still a work in progress)</h2>
-            <p>This webpage is still under construction. The backend is yet to be integrated!</p>
+            <p>This webpage is still under construction. The backend is yet to be integrated T_T!</p>
         </section>
 
         <section id="objective" class="common_style">
@@ -60,6 +70,9 @@
             <p>Hiral Singhal</p>
             <p>Shambhavi</p>
         </footer>
+        </div>
+            <script src="menu.js"></script>
+        <script type="module" src="script.js"></script>
     </body>
 
 </html>

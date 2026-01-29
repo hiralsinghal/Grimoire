@@ -4,14 +4,23 @@ import * as THREE from 'three';
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-const renderer = new THREE.WebGLRenderer()
+const renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setAnimationLoop( animate );
 renderer.render(scene, camera);
-document.body.appendChild( renderer.domElement );
-scene.background = new THREE.Color( 0x222222 );
 
-camera.position.setZ = 26;
+const canvas = renderer.domElement;
+canvas.style.position = "fixed";
+canvas.style.left = "0";
+canvas.style.top = "0";
+canvas.style.zIndex = "-1";
+canvas.style.pointerEvents = "none";
+document.body.insertBefore(canvas, document.body.firstChild);
+renderer.setClearColor(0x000000, 0);
+scene.background = null;
+
+camera.position.z = 26;
+
 
 function animate() {
   renderer.render( scene, camera );
@@ -44,16 +53,38 @@ function moveCamera() {
 document.body.onscroll = moveCamera;
 moveCamera();
 
-/*document.getElementById("playAudio").addEventListener("click", function(){
-    var audio = document.getElementById('audio');
-  if(this.className == 'is-playing'){
-    this.className = "";
-    this.innerHTML = "Play"
-    audio.pause();
-  }else{
-    this.className = "is-playing";
-    this.innerHTML = "Pause";
-    audio.play();
+function initMenu() {
+  const menuBtn = document.getElementById("menuBtn");
+  const sideMenu = document.getElementById("sideMenu");
+
+  console.log("Initializing menu. menuBtn:", menuBtn, "sideMenu:", sideMenu);
+  
+  if (menuBtn) {
+    menuBtn.style.opacity = "1";
   }
 
-})*/
+  if (menuBtn && sideMenu) {
+    menuBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log("Menu button clicked! Current classes:", sideMenu.className);
+      sideMenu.classList.toggle("open");
+      console.log("After toggle, classes:", sideMenu.className);
+    });
+    
+    const links = sideMenu.querySelectorAll("a");
+    links.forEach(link => {
+      link.addEventListener("click", function() {
+        sideMenu.classList.remove("open");
+      });
+    });
+  } else {
+    console.error("Menu elements not found!");
+  }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initMenu);
+} else {
+  initMenu();
+}
