@@ -6,9 +6,19 @@ import '../styles/index.css';
 <Layout title="Grimoire">
   <div class="layout">
     <main class="common_style">
+      <div id="header">
+        <h1>Grimoire</h1>
+        <p>Novel Recommendation System</p>
+      </div>
 
       <div class="search-container">
-        <input type="text" placeholder="Enter a book..." id="bookSearch" list="bookList" />
+        <input 
+          type="text" 
+          placeholder="Enter a book..." 
+          id="bookSearch" 
+          list="bookList" 
+          autocomplete="off" 
+        />
         <datalist id="bookList"></datalist>
         <button type="button" id="searchBtn">Recommend</button>
       </div>
@@ -17,13 +27,13 @@ import '../styles/index.css';
     </main>
 
     <section id="welcome" class="common_style">
-      <h2>Welcome to NovaRec! (Or Grimoire, the name is still a work in progress)</h2>
+      <h2>Welcome to Grimoire!</h2>
       <p>The backend is now integrated — search for a book above to get recommendations.</p>
     </section>
 
     <section id="objective" class="common_style">
       <h2>Objective of the Project:</h2>
-      <p>NovaRec aims to address various issues faced by readers all over the globe on a regular basis. Through our own struggles, we identified the need for an intelligent system that could:</p>
+      <p>Grimoire aims to address various issues faced by readers all over the globe on a regular basis. Through our own struggles, we identified the need for an intelligent system that could:</p>
       <ul>
         <li>Understand books beyond basic genre classifications to match plots and themes</li>
         <li>Provide personalised recommendations based on what readers have enjoyed</li>
@@ -40,47 +50,91 @@ import '../styles/index.css';
 </Layout>
 
 <script>
-  const searchBtn = document.getElementById('searchBtn');
-  const bookSearch = document.getElementById('bookSearch') as HTMLInputElement;
-  const resultsDiv = document.getElementById('results');
+  const BACKEND_URL = import.meta.env.PUBLIC_BACKEND_URL || 'http://127.0.0.1:5000';
 
-  searchBtn?.addEventListener('click', async () => {
-    const query = bookSearch?.value;
-    if (!query) return;
+  const searchBtn = document.getElementById('searchBtn') as HTMLButtonElement | null;
+  const bookSearch = document.getElementById('bookSearch') as HTMLInputElement | null;
+  const bookList = document.getElementById('bookList') as HTMLDataListElement | null;
+  const resultsDiv = document.getElementById('results') as HTMLDivElement | null;
 
-    if (resultsDiv) {
-      resultsDiv.innerHTML = '<div class="results-status">Searching recommendations...</div>';
+  // 1. Dynamic Dropdown / Autocomplete Handler
+  bookSearch?.addEventListener('input', async () => {
+    const query = bookSearch.value.trim();
+
+    if (query.length < 2) {
+      if (bookList) bookList.innerHTML = '';
+      return;
     }
 
     try {
-      const response = await fetch(`/api/recommend?title=${encodeURIComponent(query)}`);
+      const response = await fetch(`${BACKEND_URL}/api/search_titles?q=${encodeURIComponent(query)}`);
+      if (!response.ok) return;
+
+      const titles: string[] = await response.json();
+
+      if (bookList) {
+        bookList.innerHTML = titles
+          .map((title) => `<option value="${title}"></option>`)
+          .join('');
+      }
+    } catch (err) {
+      console.error('Failed to fetch title suggestions:', err);
+    }
+  });
+
+  // 2. Main Search & Recommendation Handler
+  async function handleSearch() {
+    const query = bookSearch?.value.trim();
+    if (!query || !resultsDiv) return;
+
+    resultsDiv.innerHTML = '<div class="results-status">Searching recommendations...</div>';
+
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/recommend?title=${encodeURIComponent(query)}`);
+
+      if (!response.ok) {
+        throw new Error(`Server returned status ${response.status}`);
+      }
+
       const data = await response.json();
 
       if (data.error) {
-        if (resultsDiv) {
-          resultsDiv.innerHTML = `<div class="results-status results-error">${data.error}</div>`;
-        }
+        resultsDiv.innerHTML = `<div class="results-status results-error">${data.error}</div>`;
         return;
       }
 
-      if (resultsDiv) {
-        const cardsHtml = data.recommendations.map((b: { title: string; author: string; genre: string }) => `
-          <li class="result-card">
-            <h3>${b.title}</h3>
-            <p class="result-meta">By <strong>${b.author}</strong></p>
-            <p class="result-meta">Genre: ${b.genre}</p>
-          </li>
-        `).join('');
+      const items = data.recommendations || data.books || data.results || [];
 
-        resultsDiv.innerHTML = `
-          <div class="results-status">Recommended Books:</div>
-          <ul class="result-list">${cardsHtml}</ul>
-        `;
+      if (items.length === 0) {
+        resultsDiv.innerHTML = '<div class="results-status">No recommendations found.</div>';
+        return;
       }
+
+      const cardsHtml = items.map((b: any) => `
+        <li class="result-card">
+          <h3>${b.title || 'Untitled'}</h3>
+          <p class="result-meta">By <strong>${b.author || 'Unknown'}</strong></p>
+          <p class="result-meta">Genre: ${b.genre || 'N/A'}</p>
+        </li>
+      `).join('');
+
+      resultsDiv.innerHTML = `
+        <div class="results-status">Recommended Books:</div>
+        <ul class="result-list">${cardsHtml}</ul>
+      `;
     } catch (err) {
-      if (resultsDiv) {
-        resultsDiv.innerHTML = '<div class="results-status results-error">Error fetching recommendations.</div>';
-      }
+      console.error('Search error:', err);
+      resultsDiv.innerHTML = '<div class="results-status results-error">Error connecting to server. Check browser console for details.</div>';
+    }
+  }
+
+  // 3. Event Listeners for Button Click and Enter Key
+  searchBtn?.addEventListener('click', handleSearch);
+
+  bookSearch?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSearch();
     }
   });
 </script>

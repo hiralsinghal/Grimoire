@@ -5,13 +5,12 @@ const currentPath = pathname.replace(/^\/|\/$/g, "");
 
 <header class="topbar">
   <a href="/" class="logo">
-    <img src="/assets/grimoire_logo.png" alt="Grimoire Logo" />
+    <img src="/public/grimoire_logo.png" alt="Grimoire Logo" />
   </a>
 
   <nav class="nav">
     <a href="/" class={currentPath === "" ? "active" : ""}>Grimoire</a>
     <a href="/about" class={currentPath === "about" ? "active" : ""}>About Us</a>
-    <a href="/profile" class={currentPath === "profile" ? "active" : ""}>Profile</a>
   </nav>
 </header>
 
@@ -56,7 +55,6 @@ const currentPath = pathname.replace(/^\/|\/$/g, "");
     margin-top: 36px;
     flex-wrap: wrap;
     justify-content: flex-end;
-    background: rgba(28, 18, 15, 0.28);
     padding: 10px 14px;
     border-radius: 10px;
     backdrop-filter: blur(4px);

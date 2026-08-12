@@ -1,36 +1,108 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.neighbors import NearestNeighbors
+import os
 
 app = Flask(__name__)
 
-books = pd.read_csv("books.csv")
-books.fillna("", inplace=True)
+# Enable CORS so your Astro frontend (running on port 4321) can talk to Flask (port 5000)
+CORS(app)
 
-books['content'] = (books['title'] + " " + books['author'] + " " + books['genre'] + " " + books['description'])
+# Load dataset
+DATASET_PATH = 'books.csv'
 
-vectorizer = TfidfVectorizer(stop_words='english')
-bookVectors = vectorizer.fit_transform(books['content'])
+def load_data():
+    if os.path.exists(DATASET_PATH):
+        df = pd.read_csv(DATASET_PATH)
+        # Ensure consistent column naming (lowercased stripped headers)
+        df.columns = [col.strip().lower() for col in df.columns]
+        return df
+    else:
+        # Fallback dummy dataframe if books.csv isn't found
+        print(f"Warning: {DATASET_PATH} not found. Using fallback sample dataset.")
+        return pd.DataFrame([
+            {"title": "The Hobbit", "author": "J.R.R. Tolkien", "genre": "Fantasy"},
+            {"title": "The Fellowship of the Ring", "author": "J.R.R. Tolkien", "genre": "Fantasy"},
+            {"title": "Dune", "author": "Frank Herbert", "genre": "Sci-Fi"},
+            {"title": "Foundation", "author": "Isaac Asimov", "genre": "Sci-Fi"},
+            {"title": "1984", "author": "George Orwell", "genre": "Dystopian"},
+            {"title": "Brave New World", "author": "Aldous Huxley", "genre": "Dystopian"},
+        ])
 
-model = NearestNeighbors(metric='cosine')
-model.fit(bookVectors)
+df = load_data()
+
+
+@app.route('/api/search_titles', methods=['GET'])
+def search_titles():
+    """Returns matching titles for the search dropdown autocompletion."""
+    query = request.args.get('q', '').strip().lower()
+
+    if not query or 'title' not in df.columns:
+        return jsonify([])
+
+    # Case-insensitive search for titles containing the query string
+    matches = df[df['title'].astype(str).str.lower().str.contains(query, na=False)]
+    
+    # Return top 10 unique titles
+    suggestions = matches['title'].drop_duplicates().head(10).tolist()
+    return jsonify(suggestions)
+
 
 @app.route('/api/recommend', methods=['GET'])
 def recommend():
-    title = request.args.get('title', '')
-    small_title = title.lower()
-    matches = books[books['title'].str.lower() == small_title]
+    """Generates book recommendations based on an input title."""
+    input_title = request.args.get('title', '').strip()
 
-    if len(matches) == 0:
-        return jsonify({'error': f"Book '{title}' not found."}), 404
+    if not input_title:
+        return jsonify({"error": "Please provide a book title."}), 400
 
-    index = matches.index[0]
-    dist, ind = model.kneighbors(bookVectors[index], n_neighbors=6)
-    rec_indices = ind.flatten()[1:]
+    if 'title' not in df.columns:
+        return jsonify({"error": "Dataset formatting error: 'title' column missing."}), 500
+
+    # Find the input book in the dataset (exact or partial match)
+    match = df[df['title'].astype(str).str.lower() == input_title.lower()]
+
+    if match.empty:
+        # Partial match fallback
+        match = df[df['title'].astype(str).str.lower().str.contains(input_title.lower(), na=False)]
+
+    if match.empty:
+        return jsonify({"error": f"Book '{input_title}' not found in database."}), 404
+
+    target_book = match.iloc[0]
+
+    # Recommendation Logic: Match by genre or author, excluding the input book itself
+    query_conditions = (df['title'].astype(str).str.lower() != target_book['title'].lower())
     
-    recs = books.iloc[rec_indices][['title', 'author', 'genre']].to_dict(orient='records')
-    return jsonify({'recommendations': recs})
+    matches = pd.DataFrame()
+
+    if 'genre' in df.columns and pd.notna(target_book.get('genre')):
+        genre_matches = df[query_conditions & (df['genre'].astype(str).str.lower() == str(target_book['genre']).lower())]
+        matches = pd.concat([matches, genre_matches])
+
+    if 'author' in df.columns and pd.notna(target_book.get('author')):
+        author_matches = df[query_conditions & (df['author'].astype(str).str.lower() == str(target_book['author']).lower())]
+        matches = pd.concat([matches, author_matches])
+
+    # If no genre/author matches, fallback to random samples from the dataset
+    if matches.empty:
+        matches = df[query_conditions]
+
+    # Deduplicate and limit to 6 recommendations
+    recommendations = matches.drop_duplicates(subset=['title']).head(6)
+
+    # Convert records to dictionary format
+    result_list = []
+    for _, row in recommendations.iterrows():
+        result_list.append({
+            "title": row.get('title', 'Unknown Title'),
+            "author": row.get('author', 'Unknown Author'),
+            "genre": row.get('genre', 'N/A')
+        })
+
+    return jsonify({"recommendations": result_list})
+
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
