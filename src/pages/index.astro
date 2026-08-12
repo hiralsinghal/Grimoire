@@ -1,14 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import '../styles/index.css';
 ---
 
 <Layout title="Grimoire">
   <div class="layout">
     <main class="common_style">
-      <div id="header">
-        <h1>Grimoire</h1>
-        <p>Novel Recommendation System</p>
-      </div>
 
       <div class="search-container">
         <input type="text" placeholder="Enter a book..." id="bookSearch" list="bookList" />
@@ -39,10 +36,6 @@ import Layout from '../layouts/Layout.astro';
       <h2>How does it work?</h2>
       <p>User first inputs a book they have already read</p>
     </section>
-
-    <footer class="common_style">
-      <p><strong>Founders</strong></p>
-    </footer>
   </div>
 </Layout>
 
@@ -55,25 +48,39 @@ import Layout from '../layouts/Layout.astro';
     const query = bookSearch?.value;
     if (!query) return;
 
-    if (resultsDiv) resultsDiv.innerHTML = '<p>Searching recommendations...</p>';
+    if (resultsDiv) {
+      resultsDiv.innerHTML = '<div class="results-status">Searching recommendations...</div>';
+    }
 
     try {
       const response = await fetch(`/api/recommend?title=${encodeURIComponent(query)}`);
       const data = await response.json();
 
       if (data.error) {
-        if (resultsDiv) resultsDiv.innerHTML = `<p>${data.error}</p>`;
+        if (resultsDiv) {
+          resultsDiv.innerHTML = `<div class="results-status results-error">${data.error}</div>`;
+        }
         return;
       }
 
       if (resultsDiv) {
-        resultsDiv.innerHTML = '<h3>Recommended Books:</h3>' +
-          '<ul>' +
-          data.recommendations.map((b: any) => `<li><strong>${b.title}</strong> by ${b.author} (${b.genre})</li>`).join('') +
-          '</ul>';
+        const cardsHtml = data.recommendations.map((b: { title: string; author: string; genre: string }) => `
+          <li class="result-card">
+            <h3>${b.title}</h3>
+            <p class="result-meta">By <strong>${b.author}</strong></p>
+            <p class="result-meta">Genre: ${b.genre}</p>
+          </li>
+        `).join('');
+
+        resultsDiv.innerHTML = `
+          <div class="results-status">Recommended Books:</div>
+          <ul class="result-list">${cardsHtml}</ul>
+        `;
       }
     } catch (err) {
-      if (resultsDiv) resultsDiv.innerHTML = '<p>Error fetching recommendations.</p>';
+      if (resultsDiv) {
+        resultsDiv.innerHTML = '<div class="results-status results-error">Error fetching recommendations.</div>';
+      }
     }
   });
 </script>
