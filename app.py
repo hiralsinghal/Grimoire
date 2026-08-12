@@ -39,6 +39,12 @@ model.fit(bookVectors)
 # lowercase title -> row index, built once for fast lookups
 _title_to_index = {title.lower(): idx for idx, title in enumerate(books["title"])}
 
+@app.route('/')
+def home():
+    return jsonify({
+        "status": "online",
+        "message": "Grimoire Recommendation API is running!"
+    })
 
 def recommend(book_title: str, top_n: int = 5):
     """
