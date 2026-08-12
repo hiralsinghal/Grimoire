@@ -1,0 +1,20 @@
+#start,
+#inspo {
+  color: #DDDDDD;
+}
+
+section.common_style {
+  margin-top: 40px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+section.common_style h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #F6EEDF;
+  letter-spacing: 0.4px;
+  font-family: 'Domine', serif;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
