@@ -1,4 +1,3 @@
-import './style.css';
 import * as THREE from 'three';
 
 const scene = new THREE.Scene();
@@ -52,39 +51,3 @@ function moveCamera() {
 
 document.body.onscroll = moveCamera;
 moveCamera();
-
-function initMenu() {
-  const menuBtn = document.getElementById("menuBtn");
-  const sideMenu = document.getElementById("sideMenu");
-
-  console.log("Initializing menu. menuBtn:", menuBtn, "sideMenu:", sideMenu);
-  
-  if (menuBtn) {
-    menuBtn.style.opacity = "1";
-  }
-
-  if (menuBtn && sideMenu) {
-    menuBtn.addEventListener("click", function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      console.log("Menu button clicked! Current classes:", sideMenu.className);
-      sideMenu.classList.toggle("open");
-      console.log("After toggle, classes:", sideMenu.className);
-    });
-    
-    const links = sideMenu.querySelectorAll("a");
-    links.forEach(link => {
-      link.addEventListener("click", function() {
-        sideMenu.classList.remove("open");
-      });
-    });
-  } else {
-    console.error("Menu elements not found!");
-  }
-}
-
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initMenu);
-} else {
-  initMenu();
-}
