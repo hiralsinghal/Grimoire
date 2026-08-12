@@ -31,6 +31,13 @@ def load_data():
 
 df = load_data()
 
+@app.route('/')
+def home():
+    return jsonify({
+        "status": "online",
+        "message": "Grimoire Recommendation API is running!"
+    })
+
 
 @app.route('/api/search_titles', methods=['GET'])
 def search_titles():
