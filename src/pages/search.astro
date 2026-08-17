@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/index.css';
+---
+
+<Layout title="search">
+  <main>
+    <input type="text" placeholder="Enter a book..." id="bookSearch" list="bookList" autocomplete="off" />
+    <datalist id="bookList"></datalist>
+    <button type="button" id="searchBtn">Recommend</button>
+    <div id="results" class="results"></div>
+  </main>
+</Layout>
+
+<script>
+  const BACKEND_URL = import.meta.env.PUBLIC_BACKEND_URL || 'http://127.0.0.1:5000';
+
+  const searchBtn = document.getElementById('searchBtn') as HTMLButtonElement | null;
+  const bookSearch = document.getElementById('bookSearch') as HTMLInputElement | null;
+  const bookList = document.getElementById('bookList') as HTMLDataListElement | null;
+  const resultsDiv = document.getElementById('results') as HTMLDivElement | null;
+
+  // 1. Dynamic Dropdown / Autocomplete Handler
+  bookSearch?.addEventListener('input', async () => {
+    const query = bookSearch.value.trim();
+
+    if (query.length < 2) {
+      if (bookList) bookList.innerHTML = '';
+      return;
+    }
+
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/search_titles?q=${encodeURIComponent(query)}`);
+      if (!response.ok) return;
+
+      const titles: string[] = await response.json();
+
+      if (bookList) {
+        bookList.innerHTML = titles
+          .map((title) => `<option value="${title}"></option>`)
+          .join('');
+      }
+    } catch (err) {
+      console.error('Failed to fetch title suggestions:', err);
+    }
+  });
+
+  // 2. Main Search & Recommendation Handler
+  async function handleSearch() {
+    const query = bookSearch?.value.trim();
+    if (!query || !resultsDiv) return;
+
+    resultsDiv.innerHTML = '<div class="results-status">Searching recommendations...</div>';
+
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/recommend?title=${encodeURIComponent(query)}`);
+
+      if (!response.ok) {
+        throw new Error(`Server returned status ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (data.error) {
+        resultsDiv.innerHTML = `<div class="results-status results-error">${data.error}</div>`;
+        return;
+      }
+
+      const items = data.recommendations || data.books || data.results || [];
+
+      if (items.length === 0) {
+        resultsDiv.innerHTML = '<div class="results-status">No recommendations found.</div>';
+        return;
+      }
+
+      const cardsHtml = items.map((b: any) => `
+        <li class="result-card">
+          <h3>${b.title || 'Untitled'}</h3>
+          <p class="result-meta">By <strong>${b.author || 'Unknown'}</strong></p>
+          <p class="result-meta">Genre: ${b.genre || 'N/A'}</p>
+        </li>
+      `).join('');
+
+      resultsDiv.innerHTML = `
+        <div class="results-status">Recommended Books:</div>
+        <ul class="result-list">${cardsHtml}</ul>
+      `;
+    } catch (err) {
+      console.error('Search error:', err);
+      resultsDiv.innerHTML = '<div class="results-status results-error">Error connecting to server. Check browser console for details.</div>';
+    }
+  }
+
+  // 3. Event Listeners for Button Click and Enter Key
+  searchBtn?.addEventListener('click', handleSearch);
+
+  bookSearch?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSearch();
+    }
+  });
+</script>

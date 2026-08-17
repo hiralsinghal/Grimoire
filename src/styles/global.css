@@ -22,10 +22,10 @@
 
 /* Base Styles */
 body {
-  background: linear-gradient(to bottom, #000000 0%, #3E2F2B 100%);
+  background: linear-gradient(to bottom, #000000, #1a1d24);
   margin: 0;
   padding: 0;
-  color: #F6EEDF;
+  color: #ffffff;
   font-family: 'Gentium Book Plus', serif;
   min-height: 100vh;
 }
@@ -42,8 +42,7 @@ canvas {
 /* Layout Wrapper */
 .common_style {
   margin: 0 auto;
-  padding: 0 30px 20px;
-  max-width: 1100px;
+  padding: 5px 10%;
   line-height: 1.85;
   font-family: 'Gentium Book Plus', serif;
   letter-spacing: 0.35px;

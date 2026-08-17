@@ -10,6 +10,7 @@ const currentPath = pathname.replace(/^\/|\/$/g, "");
 
   <nav class="nav">
     <a href="/" class={currentPath === "" ? "active" : ""}>Grimoire</a>
+    <a href="/search" class={currentPath === "about" ? "active" : ""}>Search</a>
     <a href="/about" class={currentPath === "about" ? "active" : ""}>About Us</a>
   </nav>
 </header>
