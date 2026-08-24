@@ -27,7 +27,6 @@ body {
   padding: 0;
   color: #ffffff;
   font-family: 'Gentium Book Plus', serif;
-  min-height: 100vh;
 }
 
 canvas {
@@ -37,13 +36,4 @@ canvas {
   top: 0;
   z-index: -1;
   pointer-events: none;
-}
-
-/* Layout Wrapper */
-.common_style {
-  margin: 0 auto;
-  padding: 5px 10%;
-  line-height: 1.85;
-  font-family: 'Gentium Book Plus', serif;
-  letter-spacing: 0.35px;
 }

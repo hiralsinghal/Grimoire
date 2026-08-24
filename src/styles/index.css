@@ -1,88 +1,103 @@
-main.common_style {
-  min-height: 70vh;
+header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
+  color: #F6EEDF;
+  text-align: center;
+  margin: 0 0 20px 0;
+  padding-top: 0;
+  min-height: 100vh;
 }
 
-#header {
-    color: #F6EEDF;
-    text-align: center;
-    margin: 0 0 20px 0;
-    padding-top: 0;
+header h1 {
+  font-size: 110px;
+  margin: 0;
+  font-family: 'Domine', serif;
+  letter-spacing: 0.6px;
+  line-height: 1;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.45);
 }
 
-#header h1 {
-    font-size: 110px;
-    margin: 0;
-    font-family: 'Domine', serif;
-    letter-spacing: 0.6px;
-    line-height: 1;
-    text-shadow: 0 6px 18px rgba(0,0,0,0.45);
+header p {
+  font-size: 30px;
+  margin: 0.25rem 0 0 0;
+  opacity: 0.95;
+  font-style: italic;
+  color: #f6eede;
 }
 
-#header p {
-    font-size: 30px;
-    margin: 0.25rem 0 0 0;
-    opacity: 0.95;
-    font-style: italic;
-    color: #f6eede;
+#showSearchBtn {
+  margin-top: 24px;
 }
 
-/* Section Box Styles */
 
-/* Search Bar & Result Cards */
-.search-container {
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  color: #F6EEDF;
+}
+
+#search {
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
-  margin: 40px 0;
-  width: 100%;
-}
+  align-items: center;
+} 
 
-main.common_style .search-container input {
-  width: 80%;
-  max-width: 1100px;
-  padding: 24px 42px;
-  font-size: 22px;
-  border-radius: 40px;
+#bookSearch {
+  flex: 0 1 900px;     
+  width: auto;
+  max-width: 1300px;  
+  height: 80px;       
+  padding: 0 50px;     
+  box-sizing: border-box;
+  font-size: 26px;      
+  border-radius: 50px;  
   border: 1px solid rgba(255,255,255,0.2);
   outline: none;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
   box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-  background: rgba(255, 250, 243, 0.95);
+  background: #F6EEDF;
   color: #2b2b2b;
 }
 
-.search-container input:focus {
-  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+#bookSearch:hover {
   transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
 }
 
-.search-container button {
-  margin-left: 14px;
+#searchBtn {
+  margin-left: 2px;
+  flex: 0 0 220px;      
   padding: 0 30px;
-  font-size: 18px;
+  height: 80px;          
+  box-sizing: border-box;
+  font-size: 20px;      
   font-family: 'Gentium Book Plus', serif;
-  border-radius: 40px;
+  border-radius: 50px;  
   border: 1px solid rgba(255,255,255,0.2);
   background: #F6EEDF;
   color: #2b2b2b;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-.search-container button:hover {
+#searchBtn:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 30px rgba(0,0,0,0.45);
 }
 
-.results {
-  width: 80%;
-  max-width: 1100px;
-  margin: 0 auto 40px;
+#results {
+  flex-basis: 100%;
+  width: 60%;
+  max-width: 1000px;
+  margin: 20px auto 0;
   color: #F0E8DC;
 }
 
@@ -116,12 +131,12 @@ main.common_style .search-container input {
 .result-card h3 {
   margin: 0 0 6px 0;
   font-family: 'Domine', serif;
-  font-size: 19px;
+  font-size: 22px;
   color: #F6EEDF;
 }
 
 .result-meta {
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
   opacity: 0.85;
 }
