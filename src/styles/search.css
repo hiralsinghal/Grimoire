@@ -1,6 +1,42 @@
-
-
-.common_style h2 {
-  font-size:1.5em;
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 180px 40px 80px;
+  box-sizing: border-box;
+  color: #F6EEDF;
+  min-height: 100vh;
 }
 
+section.common_style {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.common_style h2 {
+  font-size: 1.8em;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #F6EEDF;
+  letter-spacing: 0.4px;
+  font-family: 'Domine', serif;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.common_style p {
+  font-size: 20px;
+}
+
+.common_style ul {
+  font-size: 20px;
+  line-height: 1.8;
+  padding-left: 24px;
+  margin: 8px 0 0;
+}
+
+.common_style li {
+  margin-bottom: 8px;
+}

@@ -1,3 +1,16 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 180px 40px 80px;
+  box-sizing: border-box;
+  color: #F6EEDF;
+  min-height: 100vh;
+}
+
 header {
   display: flex;
   flex-direction: column;
@@ -18,26 +31,17 @@ header h1 {
   text-shadow: 0 6px 18px rgba(0,0,0,0.45);
 }
 
-.about {
-  display: flex;
-  flex-direction: column;
-  color: #F6EEDF;
-  margin: 0 0 20px 20px;
-  padding-top: 10px;
-  min-height: 100vh;
-}
-
 #start, #inspo {
   color: #DDDDDD;
 }
 
 section.common_style {
-  margin-top: 20px;
   font-size: 16px;
   line-height: 1.8;
 }
 
-.about h2 {
+.about h2,
+section.common_style h2 {
   font-size: 32px;
   font-weight: 600;
   margin-bottom: 5px;
@@ -47,6 +51,7 @@ section.common_style {
   text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
-.about p {
+.about p,
+section.common_style p {
   font-size: 20px;
 }
